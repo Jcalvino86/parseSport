@@ -1,0 +1,21 @@
+<form class="example-form" (ngSubmit)="evalueString(sport.value)">
+  <mat-toolbar>
+    <button *ngFor="let sport of examples" mat-raised-button color="warn" (click)="setValue(sport.clave)">{{sport.title}}</button>
+  </mat-toolbar>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Expresión" [formControl]="sport" [errorStateMatcher]="matcher">
+    <mat-hint>Ingresa la expresion</mat-hint>
+    <mat-error *ngIf="sport.hasError('required')">
+      Es un campo
+      <strong>Obligatorio</strong>
+    </mat-error>
+    <mat-error *ngIf="sport.hasError('error')">
+      No se detecta el
+      <strong>deporte</strong>
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="sport.invalid">Send</button>
+</form>
+<pre>
+  {{ data | json }}
+</pre>
